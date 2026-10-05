@@ -7,7 +7,11 @@ A small full-stack app for capturing and following up with people you meet at bu
 - **Database:** PostgreSQL (SQLite works locally with zero setup)
 - **AI:** Google Gemini via its REST API
 
-**Live app:** `<ADD LIVE LINK>` · **API docs:** `<BACKEND URL>/docs`
+**Live app:** https://event-leade-manager.vercel.app/ ·
+ **API docs:** https://event-leade-manager.onrender.com/docs
+
+
+ ![AI Event Lead Manager Demo](./docs/demo.gif)
 
 ## Features
 
@@ -71,7 +75,7 @@ npm install
 npm run dev                      # http://localhost:5173
 ```
 
-In development, Vite proxies `/api` to `localhost:8000`, so no extra config is needed.
+In development, API requests are handled through the Vite development proxy.
 
 ### 3. Tests
 
@@ -79,13 +83,28 @@ In development, Vite proxies `/api` to `localhost:8000`, so no extra config is n
 cd backend && pytest
 ```
 
+
 ## Deployment
 
-1. **Database:** create a free Postgres instance (Neon, Supabase or Render) and copy its connection string.
-2. **Backend (Render / Railway):** root directory `backend`, build `pip install -r requirements.txt`, start `uvicorn app.main:app --host 0.0.0.0 --port $PORT`. Set `DATABASE_URL`, `GEMINI_API_URL`, `GEMINI_API_KEY`, and `CORS_ORIGINS` (your frontend URL).
-3. **Frontend (Vercel / Netlify):** root directory `frontend`, build `npm run build`, output `dist`. Set `VITE_API_URL` to the backend URL.
+- **Database:** PostgreSQL on Neon
+- **Backend:** Deployed on Render
+- **Frontend:** Deployed on Vercel
+
+### Backend
+- Root directory: `backend`
+- Build command: `pip install -r requirements.txt`
+- Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+- Environment variables: `DATABASE_URL`, `GEMINI_API_URL`, `GEMINI_API_KEY`, `CORS_ORIGINS`
+
+### Frontend
+- Root directory: `frontend`
+- Build command: `npm run build`
+- Output directory: `dist`
+- Environment variable: `VITE_API_URL`
 
 ## API
+
+**Base API URL:** https://event-leade-manager.onrender.com
 
 | Method | Path | Purpose |
 | --- | --- | --- |
