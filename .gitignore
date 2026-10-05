@@ -1,0 +1,20 @@
+# secrets & local config
+.env
+*.env.local
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+leads.db
+
+# node
+node_modules/
+dist/
+
+# misc
+.DS_Store
+
+# Logs
+*.log
